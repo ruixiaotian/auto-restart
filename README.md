@@ -14,14 +14,24 @@ Auto Restart 是一种具有自动重启功能的监控程序，它可以监控�
 
 
 ### 如何打包?
-最方便快捷的就是pyinstaller方法了,但是发行版使用的是nuitka打包
+最方便快捷的就是pyinstaller方法了(发行版使用的是nuitka打包)
 
-nuitka很麻烦这里不赘述
 ```
 # pyinstaller方法
-pip install -r requirements.txt
+pip install -r requirement.txt
 pip install -r pyinstaller
 pyinstaller -F -w -i ./img/icon/icon.ico main.py
+```
+```
+# nuitka方法
+pip install -r requirement.txt
+pip install -r nuitka
+
+# 带控制台
+nuitka --mingw64 --standalone --show-progress --show-memory --enable-plugin=pyqt5 --nofollow-import-to=http,email,urllib,click --windows-icon-from-ico=./img/icon/icon.ico --windows-company-name=name --windows-product-name=AutoRestart --windows-file-version=1.0.0 --output-dir=out .\main.py
+
+# 不带控制台
+nuitka --mingw64 --windows-disable-console --standalone --show-progress --show-memory --enable-plugin=pyqt5 --nofollow-import-to=http,email,urllib,click --windows-icon-from-ico=./img/icon/icon.ico --windows-company-name=name --windows-product-name=AutoRestart --windows-file-version=1.0.0 --output-dir=out .\main.py
 ```
 
 ### 使用方法
