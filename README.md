@@ -1,2 +1,31 @@
-# Auto Restart 
-监控指定程序,如程序退出则重启
+# Auto Restart ![](https://img.shields.io/badge/Python-3.10-blue) ![](https://img.shields.io/badge/PyQt-5.15-green) ![](https://img.shields.io/badge/license-GPL3.0-orange)
+
+
+Auto Restart 是一种具有自动重启功能的监控程序，它可以监控指定的程序，如果该程序意外退出或崩溃，Auto Restart会自动重新启动该程序，以确保程序可以持续运行。以下是一些它的特点：
+
++ 自动重启功能：Auto Restart 可以在程序意外退出或崩溃时自动重新启动该程序，以确保程序可以持续运行。
+
++ 监控指定程序：用户可以指定要监控的程序及其启动参数，以确保程序的正确运行。
+
++ 界面友好：Auto Restart 提供图形化界面，操作简单方便，可以轻松完成程序的监控和管理。
+
+
+### 如何打包?
+最方便快捷的就是pyinstaller方法了,但是发行版使用的是nuitka打包
+
+nuitka很麻烦这里不赘述
+```
+# pyinstaller方法
+pip install -r requirements.txt
+pip install -r pyinstaller
+pyinstaller -F -w -i ./img/icon/icon.ico main.py
+```
+
+### 使用方法
+1. 点击添加
+2. 选择一个运行程序(不建议使用快捷方式)
+3. 在对话框输入运行参数(没有则留空)
+4. 点击运行,程序自动隐藏到托盘图标
+
+### License
+该程序遵循GPT3.0开源协议
