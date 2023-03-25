@@ -32,8 +32,8 @@ class FileOperate:
     def __init__(self):
         self.exe_cfg_path = Path.home() / "Documents/Bridge Club/auto_restart/config.json"
         if not self.exe_cfg_path.exists():
-            Path.mkdir(exe_cfg_path.parent, exist_ok=True)
-            with open(exe_cfg_path, "w") as f:
+            Path.mkdir(self.exe_cfg_path.parent, exist_ok=True, parents=True)
+            with open(self.exe_cfg_path, "w") as f:
                 json.dump(self.__template, f, ensure_ascii=False, indent=4)
 
     def append_config(self, config):
