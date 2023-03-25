@@ -19,7 +19,7 @@ Auto Restart 是一种具有自动重启功能的监控程序，它可以监控�
 nuitka很麻烦这里不赘述
 ```
 # pyinstaller方法
-pip install -r requirements.txt
+pip install -r requirement.txt
 pip install -r pyinstaller
 pyinstaller -F -w -i ./img/icon/icon.ico main.py
 ```
