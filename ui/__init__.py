@@ -58,11 +58,11 @@ class MainWindow(QWidget):
 
         # 设置按钮属性
         # 设置大小
-        self.run_and_stop_btn.setFixedSize(250, 60)
-        add_button.setFixedSize(60, 60)
-        rm_button.setFixedSize(60, 60)
-        self.boot_auto_start_button.setFixedSize(150, 25)
-        self.save_config_button.setFixedSize(150, 25)
+        self.run_and_stop_btn.setFixedSize(250, 40)
+        add_button.setFixedSize(60, 40)
+        rm_button.setFixedSize(60, 40)
+        self.boot_auto_start_button.setFixedSize(150, 15)
+        self.save_config_button.setFixedSize(150, 15)
 
         if self.__file_operate.read_config()['boot_auto_start_button']:
             self.boot_auto_start_button.setChecked(True)
