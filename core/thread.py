@@ -33,6 +33,7 @@ class StartThread(QThread):
         while self.signal:
             # 监控程序是否退出
             if proc.poll() is None:
+                print(proc.poll())
                 self.sleep(1)
                 continue
             else:

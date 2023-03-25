@@ -11,7 +11,8 @@ import winreg
 import sys
 from pathlib import Path
 from PyQt5.QtWidgets import QApplication, QWidget, QPushButton, QGridLayout, QCheckBox, QSpacerItem, QSizePolicy, \
-    QTableWidget, QAbstractItemView, QTableWidgetItem, QFileDialog, QInputDialog
+    QTableWidget, QAbstractItemView, QTableWidgetItem, QFileDialog, QInputDialog, QSystemTrayIcon, QAction, QMenu, \
+    QMessageBox
 from PyQt5.QtCore import Qt
 from PyQt5.QtGui import QIcon, QFont
 from core.file_operate import FileOperate
@@ -25,6 +26,7 @@ class MainWindow(QWidget):
         super().__init__()
         self.setup_window()
         self.setup_layout()
+        self.sys_icon()
 
     def setup_window(self):
         """
@@ -118,13 +120,28 @@ class MainWindow(QWidget):
 
         return layout
 
+    def sys_icon(self):
+        """设置系统托盘图标"""
+        # 创建图标
+        self.tray = QSystemTrayIcon(QIcon("./img/icon/icon.png"), self)
+        self.tray.setIcon(QIcon("./img/icon/icon.png"))
+        # 创建行为
+        self.tray.activated.connect(self.show)
+
     def __run_and_stop_signal(self):
         """启动和停止按钮槽函数"""
         file_path = self.__file_operate.read_config()["config_list"]
         file_parameter = self.__file_operate.read_config()["config_list"]
+        if not file_path:
+            # 判断是否有配置文件
+            QMessageBox.warning(self, "警告", "至少需要一个配置文件")
+            return
+
         self.start_thread_list = []
         if self.run_and_stop_btn.text() == "启动":
             self.run_and_stop_btn.setText("停止")
+            self.hide()
+            self.tray.show()
             for path, parameter in zip(file_path, file_parameter):
                 # 循环创建子进程
                 self.start_thread = StartThread(path['path'], parameter['parameter'])
@@ -217,3 +234,12 @@ class MainWindow(QWidget):
             # 修改配置文件
             item["save_config_button"] = False
             self.__file_operate.write_config(item)
+
+    def closeEvent(self, event) -> None:
+        """关闭事件"""
+        if self.run_and_stop_btn.text() == "停止":
+            self.hide()
+            self.tray.show()
+            event.ignore()  # 忽略事件
+        else:
+            self.close()

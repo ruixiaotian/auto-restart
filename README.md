@@ -1,4 +1,7 @@
-# Auto Restart ![](https://img.shields.io/badge/Python-3.10-blue) ![](https://img.shields.io/badge/PyQt-5.15-green) ![](https://img.shields.io/badge/license-GPL3.0-orange)
+# Auto Restart 
+[![](https://img.shields.io/badge/Python-3.10-blue) ](https://www.python.org/)
+[![](https://img.shields.io/badge/PyQt-5.15-green) ](https://doc.qt.io/qt.html#qtforpython)
+[![](https://img.shields.io/badge/license-GPL3.0-orange)](https://github.com/ruixiaotian/auto-restart/blob/main/LICENSE)
 
 
 Auto Restart 是一种具有自动重启功能的监控程序，它可以监控指定的程序，如果该程序意外退出或崩溃，Auto Restart会自动重新启动该程序，以确保程序可以持续运行。以下是一些它的特点：
