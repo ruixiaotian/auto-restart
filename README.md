@@ -41,4 +41,4 @@ nuitka --mingw64 --windows-disable-console --standalone --show-progress --show-m
 4. 点击运行,程序自动隐藏到托盘图标
 
 ### License
-该程序遵循GPT3.0开源协议
+该程序遵循GPL3.0开源协议
